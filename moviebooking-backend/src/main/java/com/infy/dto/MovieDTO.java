@@ -9,8 +9,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public class MovieDTO {
-    @Column(name = "movieId")
-    private String movieId;
+    @Column(name = "movie_id")
+    private int movieId;
     @NotNull(message = "{please provide title. It should not be empty}")
     @Column(name = "title")
     private String title;
@@ -22,7 +22,7 @@ public class MovieDTO {
     @Column(name = "duration")
     private int duration;
 
-    public MovieDTO(String movieId, String title, String genre, int duration) {
+    public MovieDTO(int movieId, String title, String genre, int duration) {
         super();
         this.movieId = movieId;
         this.title = title;
@@ -33,11 +33,11 @@ public class MovieDTO {
     public MovieDTO() {
     }
 
-    public String getMovieId() {
+    public int getMovieId() {
         return movieId;
     }
 
-    public void setMovieId(String movieId) {
+    public void setMovieId(int movieId) {
         this.movieId = movieId;
     }
 

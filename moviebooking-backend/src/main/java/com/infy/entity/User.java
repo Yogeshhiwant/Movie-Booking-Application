@@ -9,12 +9,12 @@ import jakarta.persistence.Id;
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String userId;
+	private int userId;
 	private String userName;
 	private int age;
 	private long mobile;
 
-	public User(String userId, String userName, int age, long mobile) {
+	public User(int userId, String userName, int age, long mobile) {
 		super();
 		this.userId = userId;
 		this.userName = userName;
@@ -26,11 +26,11 @@ public class User {
 		super();
 	}
 
-	public String getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 

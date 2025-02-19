@@ -6,7 +6,7 @@ import com.infy.entity.MovieScreen;
 import jakarta.persistence.Column;
 
 public class MovieScreenDTO {
-	@Column(name = "screenId")
+	@Column(name = "screen_id")
 	private int screenId;
 	private String screenName;
 	private int capacity;

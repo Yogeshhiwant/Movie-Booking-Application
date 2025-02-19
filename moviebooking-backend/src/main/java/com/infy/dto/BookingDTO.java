@@ -1,10 +1,11 @@
 package com.infy.dto;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
 public class BookingDTO {
-
+	@Column(name = "booking_id")
 	private int bookingId;
 	@ManyToOne
 	private MovieScheduleDTO movie;

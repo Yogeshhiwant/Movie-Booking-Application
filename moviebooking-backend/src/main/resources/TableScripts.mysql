@@ -7,64 +7,64 @@ USE moviebooking_rest;
 
 
 CREATE TABLE movie (
-  movieId VARCHAR(255) PRIMARY KEY,  -- Use VARCHAR for shorter String identifiers
+  movie_id INT(255) PRIMARY KEY,  -- Use VARCHAR for shorter String identifiers
   title VARCHAR(255) NOT NULL,
   genre VARCHAR(255),
   duration INT NOT NULL
 );
 
 CREATE TABLE user (
-  userId VARCHAR(255) PRIMARY KEY,
-  userName VARCHAR(255) NOT NULL,
+  user_id INT(255) PRIMARY KEY,
+  user_name VARCHAR(255) NOT NULL,
   age INT NOT NULL,
   mobile BIGINT NOT NULL  -- Use BIGINT for larger integer values (phone numbers)
 );
 
 CREATE TABLE movie_screen (  -- Use underscores for table names
-  screenId INT PRIMARY KEY AUTO_INCREMENT,  -- Auto-increment for unique IDs
-  screenName VARCHAR(255) NOT NULL,
+  screen_id INT PRIMARY KEY AUTO_INCREMENT,  -- Auto-increment for unique IDs
+  screen_name VARCHAR(255) NOT NULL,
   capacity INT NOT NULL
 );
 
 CREATE TABLE movie_schedule (  -- Use underscores for table names
-  scheduleId VARCHAR(255) PRIMARY KEY,
+  schedule_id VARCHAR(255) PRIMARY KEY,
   movie_id INT NOT NULL,  -- Foreign key referencing movie table
   screen_id INT NOT NULL,  -- Foreign key referencing movie_screen table
-  startTime DATETIME NOT NULL,  -- DATETIME for date and time
+  start_time DATETIME NOT NULL,  -- DATETIME for date and time
   cost DOUBLE NOT NULL,
-  FOREIGN KEY (movie_id) REFERENCES movie(movieId),
-  FOREIGN KEY (screen_id) REFERENCES movie_screen(screenId)
+  FOREIGN KEY (movie_id) REFERENCES movie(movie_id),
+  FOREIGN KEY (screen_id) REFERENCES movie_screen(screen_id)
 );
 
 CREATE TABLE booking (
-  bookingId INT PRIMARY KEY AUTO_INCREMENT,
+  booking_id INT PRIMARY KEY AUTO_INCREMENT,
   schedule_id VARCHAR(255) NOT NULL,  -- Foreign key referencing movie_schedule table
   user_id VARCHAR(255) NOT NULL,  -- Foreign key referencing user table
   noOfSeats INT NOT NULL,
-  FOREIGN KEY (schedule_id) REFERENCES movie_schedule(scheduleId),
-  FOREIGN KEY (user_id) REFERENCES user(userId)
+  FOREIGN KEY (schedule_id) REFERENCES movie_schedule(schedule_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id)
 );
 
 -- Insert movies
-INSERT INTO movie (movieId, title, genre, duration) VALUES
+INSERT INTO movie (movie_id, title, genre, duration) VALUES
   ('M101', 'The Big Lebowski', 'Comedy', 115),
   ('M102', 'The Shawshank Redemption', 'Drama', 142),
   ('M103', 'The Lord of the Rings: The Fellowship of the Ring', 'Fantasy', 201);
 
 -- Insert users
-INSERT INTO user (userId, userName, age, mobile) VALUES
+INSERT INTO user (user_id, user_name, age, mobile) VALUES
   ('U1001', 'John Doe', 30, 1234567890),
   ('U1002', 'Jane Smith', 25, 9876543210),
   ('U1003', 'Alice Walker', 42, 0123456789);
 
 -- Insert movie screens
-INSERT INTO movie_screen (screenName, capacity) VALUES
+INSERT INTO movie_screen (screen_name, capacity) VALUES
   ('Screen 1', 100),
   ('Screen 2', 75),
   ('Screen 3', 50);
 
 -- Insert movie schedules (assuming movie IDs and screen IDs already exist)
-INSERT INTO movie_schedule (scheduleId, movie_id, screen_id, startTime, cost) VALUES
+INSERT INTO movie_schedule (schedule_id, movie_id, screen_id, start_time, cost) VALUES
   ('S1001', 'M101', 1, '2024-03-23 18:00:00', 10.00),
   ('S1002', 'M102', 2, '2024-03-24 15:00:00', 12.50),
   ('S1003', 'M103', 3, '2024-03-25 20:00:00', 15.00);

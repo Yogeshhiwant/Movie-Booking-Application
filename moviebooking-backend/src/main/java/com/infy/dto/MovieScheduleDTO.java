@@ -2,11 +2,13 @@ package com.infy.dto;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotNull;
 
 public class MovieScheduleDTO {
-	private String scheduleId;
+	@Column(name = "schedule_id")
+	private int scheduleId;
 	@ManyToOne
 	private MovieDTO movie;
 	@ManyToOne
@@ -18,7 +20,7 @@ public class MovieScheduleDTO {
 	public MovieScheduleDTO() {
 	}
 
-	public MovieScheduleDTO(String scheduleId, MovieDTO movie, MovieScreenDTO screen, LocalDateTime startTime,
+	public MovieScheduleDTO(int scheduleId, MovieDTO movie, MovieScreenDTO screen, LocalDateTime startTime,
 			Double cost) {
 		super();
 		this.scheduleId = scheduleId;
@@ -28,11 +30,11 @@ public class MovieScheduleDTO {
 		this.cost = cost;
 	}
 
-	public String getScheduleId() {
+	public int getScheduleId() {
 		return scheduleId;
 	}
 
-	public void setScheduleId(String scheduleId) {
+	public void setScheduleId(int scheduleId) {
 		this.scheduleId = scheduleId;
 	}
 

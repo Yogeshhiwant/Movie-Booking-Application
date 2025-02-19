@@ -6,6 +6,6 @@ import com.infy.entity.Movie;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MovieRepository extends CrudRepository<Movie, String>{
+public interface MovieRepository extends CrudRepository<Movie, Integer>{
 	     // Optional<Movie> findById(String movieId);
 }
